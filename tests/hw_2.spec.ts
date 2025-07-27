@@ -41,7 +41,7 @@ test('Check lastname input', async ({ page }) => {
     await expect(modalBody).toContainText('Last name has to be from 2 to 20 characters long');
     lastName.clear();
     await expect(modalBody).toContainText('Last name required');
-    lastName.fill('Привіт');
+    lastName.fill('Привіт!');
     await expect(modalBody).toContainText('Last name is invalid');
     await expect(lastName).toHaveCSS('border-color', 'rgb(220, 53, 69)');
 
