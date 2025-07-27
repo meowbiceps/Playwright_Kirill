@@ -1,0 +1,22 @@
+{
+  "name": "playwright_kirill",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meowbiceps/Playwright_Kirill.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meowbiceps/Playwright_Kirill/issues"
+  },
+  "homepage": "https://github.com/meowbiceps/Playwright_Kirill#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.13"
+  }
+}
