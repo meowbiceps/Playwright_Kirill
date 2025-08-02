@@ -2,7 +2,15 @@
   "name": "playwright_kirill",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "playwright:test:headless": "playwright test",
+    "playwright:test:headed": "playwright test --headed",
+    "playwright:test:headed:chrome": "playwright test --headed --project=chrome",
+    "playwright:test:headed:firefox": "playwright test --headed --project=firefox",
+    "playwright:ui": "playwright test --ui",
+    "lint": "eslint --ext .js,.mjs,.cjs",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/meowbiceps/Playwright_Kirill.git"
@@ -16,7 +24,17 @@
   "homepage": "https://github.com/meowbiceps/Playwright_Kirill#readme",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.32.0",
     "@playwright/test": "^1.54.1",
-    "@types/node": "^24.0.13"
+    "@types/node": "^24.0.13",
+    "eslint": "^9.32.0",
+    "eslint-plugin-playwright": "^2.2.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "typescript-eslint": "^8.38.0"
+  },
+  "dependencies": {
+    "lint": "^0.8.19"
   }
 }

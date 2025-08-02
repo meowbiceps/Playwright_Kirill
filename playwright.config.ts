@@ -30,6 +30,14 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    baseURL: 'https://qauto.forstudy.space',
+    headless: false,
+    viewport: { width: 1920, height: 1080 },
+    video: 'on', //'on-first-retry',
+    httpCredentials: {
+      username: 'guest',
+      password: 'welcome2qauto',
+    },
   },
 
   /* Configure projects for major browsers */
