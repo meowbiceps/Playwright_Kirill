@@ -60,16 +60,16 @@ test('Check email field', async ({ page }) => {
     await expect(email).toHaveCSS('border-color', 'rgb(220, 53, 69)');
     email.clear();
     await expect(modalBody).toContainText('Email required');
-  
+
 });
 
 test('Check password field', async ({ page }) => {
     await page.goto(url);
 
     await page.getByText('Sign up').click();
-    const password =  page.locator('#signupPassword')
-    const modalBody =  page.locator('.modal-body');
-    const email =  page.locator('#signupEmail');
+    const password = page.locator('#signupPassword')
+    const modalBody = page.locator('.modal-body');
+    const email = page.locator('#signupEmail');
     await password.fill('1ab2cdA');
     await email.click();
     await expect(modalBody).toContainText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter');
@@ -101,7 +101,7 @@ test('Check re-enter password field', async ({ page }) => {
     const modalBody = page.locator('.modal-body');
     const password = page.locator('#signupPassword');
     const rePassword = page.locator('#signupRepeatPassword');
-    const email =  page.locator('#signupEmail');
+    const email = page.locator('#signupEmail');
     await password.fill('123A4567c1451');
     await rePassword.fill('123A4567c1452');
     await email.click();
@@ -117,10 +117,10 @@ test('Create account', async ({ page }) => {
     await page.getByText('Sign up').click();
     const password = page.locator('#signupPassword');
     const rePassword = page.locator('#signupRepeatPassword');
-    const email =  page.locator('#signupEmail');
-    const name =  page.locator('#signupName');
-    const lastName =  page.locator('#signupLastName');
- 
+    const email = page.locator('#signupEmail');
+    const name = page.locator('#signupName');
+    const lastName = page.locator('#signupLastName');
+
     await name.fill('Kirill');
     await lastName.fill('Plotnikov');
     await email.fill(getRandomEmail());
@@ -129,12 +129,12 @@ test('Create account', async ({ page }) => {
     const btnRegister = page.getByRole('button', { name: 'Register' });
     await expect(btnRegister).toBeEnabled();
     await btnRegister.click();
-    await expect (page.locator('.panel-empty_message')).toHaveText('You don’t have any cars in your garage');
-    
+    await expect(page.locator('.panel-empty_message')).toHaveText('You don’t have any cars in your garage');
+
 });
 
 function getRandomEmail(min = 99, max = 9999) {
-    return 'aqa-kirill-' + (Math.floor(Math.random() * (max - min + 1)) + min) + '@gmail.com' ;
+    return 'aqa-kirill-' + (Math.floor(Math.random() * (max - min + 1)) + min) + '@gmail.com';
 }
 
 
