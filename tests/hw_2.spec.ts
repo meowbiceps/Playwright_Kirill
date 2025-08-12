@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
-const url = 'https://qauto.forstudy.space/';
 
 test('Check first name input', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
     const doMore = await page.innerText('.hero-descriptor_title');
     expect(doMore).toBe('Do more!');
 
@@ -26,7 +25,7 @@ test('Check first name input', async ({ page }) => {
 });
 
 test('Check lastname input', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
 
     await page.getByText('Sign up').click();
 
@@ -48,7 +47,7 @@ test('Check lastname input', async ({ page }) => {
 });
 
 test('Check email field', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
 
     await page.getByText('Sign up').click();
     const modalBody = await page.locator('.modal-body');
@@ -64,7 +63,7 @@ test('Check email field', async ({ page }) => {
 });
 
 test('Check password field', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
 
     await page.getByText('Sign up').click();
     const password = page.locator('#signupPassword')
@@ -95,7 +94,7 @@ test('Check password field', async ({ page }) => {
 });
 
 test('Check re-enter password field', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
 
     await page.getByText('Sign up').click();
     const modalBody = page.locator('.modal-body');
@@ -112,7 +111,7 @@ test('Check re-enter password field', async ({ page }) => {
 });
 
 test('Create account', async ({ page }) => {
-    await page.goto(url);
+    await page.goto('/');
 
     await page.getByText('Sign up').click();
     const password = page.locator('#signupPassword');
