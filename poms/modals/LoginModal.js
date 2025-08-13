@@ -1,15 +1,15 @@
-import { BaseModal } from "./BaseModal";
+import { BaseModal } from './BaseModal';
 
 export class LoginModal extends BaseModal {
     constructor(page) {
         super(page);
         this.selectors = {
-        ...this.selectors,
-        emailInput: this._page.locator('#signinEmail'),
-        passwordInput: this._page.locator('#signinPassword'),
-        rememberCheckBox: this._page.locator('#remember'),
-        forgotBtn: this._page.locator('button', { hasText: 'Forgot password' }),
-        }
+            ...this.selectors,
+            emailInput: this._page.locator('#signinEmail'),
+            passwordInput: this._page.locator('#signinPassword'),
+            rememberCheckBox: this._page.locator('#remember'),
+            forgotBtn: this._page.locator('button', { hasText: 'Forgot password' }),
+        };
     };
 
     async typeEmail(email) {
@@ -23,9 +23,9 @@ export class LoginModal extends BaseModal {
     }
 
     async login(email, password) {
-        this.typeEmail(email);
-        this.typePassword(password);
-        this.clickSubmitButton();
+        await this.typeEmail(email);
+        await this.typePassword(password);
+        await this.clickSubmitButton();
     }
 
 }
