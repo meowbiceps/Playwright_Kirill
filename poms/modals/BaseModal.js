@@ -18,19 +18,19 @@ export class BaseModal {
     };
   }
 
-  async isModalVisible(){
+  async isModalVisible() {
     await expect(this.selectors.modalContent).toBeVisible();
   }
 
-  async clickCloseButton(){
+  async clickCloseButton() {
     await this.selectors.closeButton.click();
   }
 
-  async clickSubmitButton(){
+  async clickSubmitButton() {
     await this.selectors.submitButton.click();
   }
 
-  async clickRegistrationButton(){
+  async clickRegistrationButton() {
     await this.selectors.registrationBtn.click();
   }
 
@@ -42,13 +42,13 @@ export class BaseModal {
     await expect(this.selectors.registrationBtn).toBeEnabled();
   }
 
-  async checkValidationMessage(message){
-    if(!message) throw new Error ('Message is missed');
+  async checkValidationMessage(message) {
+    if (!message) throw new Error('Message is missed');
     await expect(this.selectors.modalContent).toContainText(message);
   }
 
-  async checkFieldBorderCollor(fieldName){
-    if(!fieldName) throw new Error ('Field should not be empty');
-   await expect(this.selectors[fieldName]).toHaveCSS('border-color', 'rgb(220, 53, 69)');
+  async checkFieldBorderCollor(fieldName) {
+    if (!fieldName) throw new Error('Field should not be empty');
+    await expect(this.selectors[fieldName]).toHaveCSS('border-color', 'rgb(220, 53, 69)');
   }
 }

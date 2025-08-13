@@ -16,7 +16,7 @@ export class MainPage extends BasePage {
 
     async clickSignIn() {
         await this.selectors.signInBtn.click();
-        return new LoginModal(this._page, this._context)
+        return new LoginModal(this._page, this._context);
     }
     
     async clickSignUp() {
