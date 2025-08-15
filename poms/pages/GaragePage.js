@@ -10,7 +10,8 @@ export class GaragePage extends BasePage {
     selectors = {
         emptyMessage: this._page.locator('.panel-empty_message'),
         profile: this._page.locator('[routerlink="profile"]'),
-        profileContext: this._page.locator('.panel-page_content')
+        profileContext: this._page.locator('.panel-page_content'),
+        carItem: this._page.locator('.car-item')
     };
 
     async emptyMessageHasText(text) {
@@ -25,6 +26,9 @@ export class GaragePage extends BasePage {
         await expect(this.selectors.profileContext).toHaveText(text);
     }
 
+    async ckeckCarsCountOnPage(number) {
+        await expect(this.selectors.carItem).toHaveCount(number);
+    }
     // async addCar(brand, model, mileage) {
     //     await this._page.locator('button.btn-primary').click(); 
     //     await this._page.locator('#addCarBrand').selectOption({ label: brand });
