@@ -12,5 +12,11 @@ export class BasePage {
         await this._page.goto('https://qauto.forstudy.space' + (this._path));
     }
 
+    async waitFore(ms) {
+        await this._page.waitForTimeout(ms);
+    }
+
+    async
+
 }
 

@@ -15,7 +15,7 @@ test.describe('Main check', () => {
         await mainPage.open();
         await mainPage.clickSignUp();
         registerModal = new RegisterModal(page);
-    })
+    });
 
     test('Check first name input', async () => {
         await registerModal.isRegisterDisabled();

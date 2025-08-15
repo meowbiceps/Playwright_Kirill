@@ -9,10 +9,28 @@ export class GaragePage extends BasePage {
 
     selectors = {
         emptyMessage: this._page.locator('.panel-empty_message'),
+        profile: this._page.locator('[routerlink="profile"]'),
+        profileContext: this._page.locator('.panel-page_content')
     };
 
     async emptyMessageHasText(text) {
-        await expect(this.selectors.emptyMessage).toHaveText(text)
+        await expect(this.selectors.emptyMessage).toHaveText(text);
+    };
+
+    async clickUserProfile() {
+        await this.selectors.profile.click();
+    };
+
+    async profileContextHasText(text) {
+        await expect(this.selectors.profileContext).toHaveText(text);
     }
-    
+
+    // async addCar(brand, model, mileage) {
+    //     await this._page.locator('button.btn-primary').click(); 
+    //     await this._page.locator('#addCarBrand').selectOption({ label: brand });
+    //     await this._page.locator('#addCarModel').selectOption({ label: model });
+    //     await this._page.locator('#addCarMileage').fill(mileage.toString());
+    //     await this._page.locator('btn btn-secondary').click(); 
+    //   }
+      
 }
