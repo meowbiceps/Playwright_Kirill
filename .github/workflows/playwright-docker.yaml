@@ -23,7 +23,7 @@ jobs:
             -w /e2e \
             -e BASE_URL=${{ secrets.BASE_URL }} \
             mcr.microsoft.com/playwright:focal \
-            sh -c "npm install && npx playwright install && npx playwright test --reporter=html"
+            sh -c "npm install && npx playwright install && npx playwright test"
 
       # 3. Upload HTML report as artifact
       - name: Upload Playwright HTML report
