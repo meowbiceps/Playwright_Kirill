@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Playwright_Kirill",
+			"path": "."
+		},
+		{
+			"name": "scripts",
+			"path": "../../Downloads/playwright-docker-kit-firefox/scripts"
+		}
+	],
+	"settings": {}
+}
