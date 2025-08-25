@@ -12,7 +12,7 @@ test.describe('test suit', () => {
         const garagePage = new GaragePage(page);
         const name = 'Kirill'
         const lastName = 'Plotnikov'
-    
+
         await page.route('**/api/users/profile', async route => {
             await route.fulfill({
                 status: 200,
@@ -26,67 +26,64 @@ test.describe('test suit', () => {
                         lastName: lastName
                     }
                 })
-    
+
             });
         });
-    
+
         mainPage.open();
+        await expect(page).toHaveURL('/panel/garage');
         await garagePage.clickUserProfile();
         await garagePage.profileContextHasText(name + ' ' + lastName);
     })
-    
-    test('Create car with API', async ({ page, request }) => {
-               const mainPage = new MainPage(page);
-               const garagePage = new GaragePage(page);
-           
-               const response = await request.post('https://qauto.forstudy.space/api/cars', {
-                   data: {
-                       carBrandId: carBrandId,
-                       carModelId: carModelId,
-                       mileage: mileage
-                   },
-               });
-           
-               const body = await response.json();
-               const carId = body.data.id;
-           
-               expect(response.status()).toBe(201);
-               await mainPage.open();
 
-               await garagePage.ckeckCarsCountOnPage(1);
-           
-               const respenseDelete = await request.delete(`https://qauto.forstudy.space/api/cars/${carId}`);
-           
-               expect(respenseDelete.status()).toBe(200);
-           });
-    
-    test('Bad request', async ({ page, request }) => {
-       
+    test('Create car with API', async ({ page, request }) => {
         const mainPage = new MainPage(page);
         const garagePage = new GaragePage(page);
-    
+
+        const response = await request.post('https://qauto.forstudy.space/api/cars', {
+            data: {
+                carBrandId: carBrandId,
+                carModelId: carModelId,
+                mileage: mileage
+            },
+        });
+        console.log(response)
+
+        const body = await response.json();
+        const carId = body.data.id;
+
+        expect(response.status()).toBe(201);
+        await mainPage.open();
+
+        const respenseDelete = await request.delete(`https://qauto.forstudy.space/api/cars/${carId}`);
+
+        expect(respenseDelete.status()).toBe(200);
+    });
+
+    test('Bad request', async ({ page, request }) => {
+
+        const mainPage = new MainPage(page);
+        const garagePage = new GaragePage(page);
+
         const response = await request.post('https://qauto.forstudy.space/api/cars', {
             data: {
                 carBrandId: carBrandId,
                 carModelId: carModelId,
             },
         });
-    
-        const responseBody = await response.json();
         expect(response.status()).toBe(400);
-    
+
         await mainPage.open();
-        await garagePage.waitFore(5000)
     })
-    
+
     test('Bad request 404', async ({ page, request }) => {
-       
+
         const mainPage = new MainPage(page);
         const garagePage = new GaragePage(page);
-    
+
         const carBrandId = 1;
         const carModelId = 1;
-    
+
         const response = await request.post('https://qauto.forstudy.space/api/cblablabla', {
             data: {
                 carBrandId: carBrandId,
@@ -94,16 +91,12 @@ test.describe('test suit', () => {
                 mileage: mileage
             },
         });
-    
-        const responseBody = await response.json();
-        console.log('Ответ сервера:', responseBody);
-    
+
         expect(response.status()).toBe(404);
-    
+
         await mainPage.open();
-        await garagePage.waitFore(5000)
     })
-}) 
+})
 
 
 

@@ -29,12 +29,5 @@ export class GaragePage extends BasePage {
     async ckeckCarsCountOnPage(number) {
         await expect(this.selectors.carItem).toHaveCount(number);
     }
-    // async addCar(brand, model, mileage) {
-    //     await this._page.locator('button.btn-primary').click(); 
-    //     await this._page.locator('#addCarBrand').selectOption({ label: brand });
-    //     await this._page.locator('#addCarModel').selectOption({ label: model });
-    //     await this._page.locator('#addCarMileage').fill(mileage.toString());
-    //     await this._page.locator('btn btn-secondary').click(); 
-    //   }
       
 }
