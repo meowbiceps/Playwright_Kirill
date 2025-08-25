@@ -1,0 +1,17 @@
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.chromium
+    image: playwright-chromium
+    working_dir: /work
+    init: true
+    ipc: host
+    volumes:
+      - ./:/work
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report
+    environment:
+      - CI=1
+      - PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+    command: ["npx", "playwright", "test"]

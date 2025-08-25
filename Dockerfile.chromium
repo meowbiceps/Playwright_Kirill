@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+FROM mcr.microsoft.com/playwright:v1.55.0-noble
+
+WORKDIR /work
+
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright \
+    CI=1
+
+COPY package*.json ./
+RUN npm ci --ignore-scripts
+
+COPY . .
+
+CMD ["npx", "playwright", "test", "--project=chromium"]
