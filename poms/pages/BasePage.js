@@ -15,8 +15,5 @@ export class BasePage {
     async waitFore(ms) {
         await this._page.waitForTimeout(ms);
     }
-
-    async
-
 }
 
