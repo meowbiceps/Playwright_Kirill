@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { MainPage } from '../poms/pages/MainPage';
 import { GaragePage } from '../poms/pages/GaragePage';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const carBrandId = 1;
 const carModelId = 1;
@@ -37,30 +35,30 @@ test.describe('test suit', () => {
         await garagePage.profileContextHasText(name + ' ' + lastName);
     })
     
-    test('Create car with response', async ({ page, request }) => {
-        const mainPage = new MainPage(page);
-        const garagePage = new GaragePage(page);
-    
-        const response = await request.post('https://qauto.forstudy.space/api/cars', {
-            data: {
-                carBrandId: carBrandId,
-                carModelId: carModelId,
-                mileage: mileage
-            },
-        });
-    
-        const body = await response.json();
-        const carId = body.data.id;
-    
-        expect(response.status()).toBe(201);
-        await mainPage.open();
-        await garagePage.waitFore(5000);
-    
-        const respenseDelete = await request.delete(`https://qauto.forstudy.space/api/cars/${carId}`);
-        const responseBody = await respenseDelete.json();
-    
-        expect(response.status()).toBe(201);
-    });
+    test('Create car with API', async ({ page, request }) => {
+               const mainPage = new MainPage(page);
+               const garagePage = new GaragePage(page);
+           
+               const response = await request.post('https://qauto.forstudy.space/api/cars', {
+                   data: {
+                       carBrandId: carBrandId,
+                       carModelId: carModelId,
+                       mileage: mileage
+                   },
+               });
+           
+               const body = await response.json();
+               const carId = body.data.id;
+           
+               expect(response.status()).toBe(201);
+               await mainPage.open();
+
+               await garagePage.ckeckCarsCountOnPage(1);
+           
+               const respenseDelete = await request.delete(`https://qauto.forstudy.space/api/cars/${carId}`);
+           
+               expect(respenseDelete.status()).toBe(200);
+           });
     
     test('Bad request', async ({ page, request }) => {
        
